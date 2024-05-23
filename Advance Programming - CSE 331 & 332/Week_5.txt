@@ -1,0 +1,215 @@
+// Dynamic method dispatch
+class A
+{
+    void show()
+    {
+        System.out.println("class A");
+    }
+}
+class B extends A
+{
+    void show()
+    {
+        System.out.println("class B");
+    }
+}
+class C extends A
+{
+    void show()
+    {
+        System.out.println("class C");
+    }
+}
+class HelloWorld {
+    public static void main(String[] args) {
+       A a = new A();
+       B b = new B();
+       C c = new C();
+       
+       A r;
+       r = a;
+       r.show();
+       
+       r = b;
+       r.show();
+       
+       r = c;
+       r.show();
+    }
+}
+
+//static 
+class hello 
+{
+    static int a = 10; //static variable
+    static int b;
+    static  //static block
+    {
+        b = 6;
+    }
+    static void display() //static function
+    {
+        System.out.println("a: "+a);
+        System.out.println("b: "+b);
+    }
+    public static void main(String args[])
+    {
+        display();
+    }
+}
+
+//outside class - static
+class Test
+{
+    static int a = 10; //static variable
+    static void display() //static function
+    {
+        System.out.println("a: "+a);
+    }
+    void show()
+    {
+        System.out.println("Nothing");
+    }
+}
+class hello 
+{
+    
+    public static void main(String args[])
+    {
+        Test t = new Test();
+        Test.display();
+        System.out.println("a: "+Test.a);
+        t.show();
+    }
+}
+
+//static (sharing same variable)
+import java.util.*;
+class Student
+{
+   static int counter = 0;
+   int id;
+   void getData()
+   {
+       Scanner sc = new Scanner(System.in);
+       System.out.print("Enter Student ID: ");
+       id = sc.nextInt();
+   }
+   static int Count_student()
+   {
+       counter++;
+       return counter;
+   }
+   void display()
+   {
+       System.out.println("Student number: "+Count_student());
+       System.out.println("Id: "+id);
+   }
+   
+}
+class hello 
+{
+    
+    public static void main(String args[])
+    {
+        Student s1 = new Student();
+        s1.getData();
+        s1.display();
+        
+        Student s2 = new Student();
+        s2.getData();
+        s2.display();
+    }
+}
+
+//abstract class and abstract method
+abstract class Vehicle
+{
+    void display()
+    {
+        System.out.println("Vehicle");
+    }
+    abstract void show();
+}
+class Car extends Vehicle 
+{
+    void show()
+    {
+        System.out.println("Car");
+    }
+}
+
+class hello
+{
+    public static void main(String args[])
+    {
+        Vehicle v = new Car();
+        v.show();
+        v.display();
+    }
+}
+
+//Interface 
+interface Vehicle
+{
+   void SpeedUp(int a);
+   void SpeedDown(int a);
+}
+class Car implements Vehicle 
+{
+   int speed;
+   Car(int speed)
+   {
+       this.speed = speed;
+   }
+   public void SpeedUp(int a)
+   {
+       speed += a;
+       System.out.println("Speed of car: "+speed);
+   }
+   public void SpeedDown(int a)
+   {
+       speed -= a;
+       System.out.println("Speed of car: "+speed);
+   }
+}
+
+class hello
+{
+    public static void main(String args[])
+    {
+        Vehicle v = new Car(10);
+        v.SpeedUp(4);
+        v.SpeedDown(2);
+        
+        Car c = new Car(12);
+        c.SpeedUp(3);
+        c.SpeedDown(1);
+        
+    }
+}
+
+//multiple inheritance through interface
+interface A
+{
+    void show();
+}
+interface B
+{
+    void show();
+}
+class Test implements A,B 
+{
+    public void show()
+    {
+        System.out.println("A and B");
+    }
+}
+class hello 
+{
+    public static void main(String args[])
+    {
+        Test t = new Test();
+        t.show();
+    }
+}

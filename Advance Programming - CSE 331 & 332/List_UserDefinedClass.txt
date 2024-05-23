@@ -1,0 +1,112 @@
+package listinterface;
+import java.util.*;
+
+class Employee
+{
+    int Id;
+    String name,address;
+    Employee()
+    {
+        Id = 0;
+        name = "ABC";
+        address="n/a";
+    }
+    Employee(int Id,String name,String address)
+    {
+        this.Id=Id;
+        this.name=name;
+        this.address=address;
+    }
+    void display(ArrayList<Employee>list)
+    {
+        System.out.println("Employee Detail: ");
+        for(Employee emp:list)
+        {
+            System.out.println("Employee Id: "+emp.Id);
+            System.out.println("Employee name: "+emp.name);
+            System.out.println("Employee address: "+emp.address);
+        }
+    }
+}
+
+public class ListInterface {
+
+    
+    public static void main(String[] args) {
+        Employee e1 = new Employee(102,"Rahim","Mirpur");
+        Employee e2 = new Employee(105,"Karim","Gabtoli");
+        Employee e3 = new Employee(107,"Abul","Farmgate");
+        
+        ArrayList<Employee> list = new ArrayList<>();
+        list.add(e1);
+        list.add(e2);
+        list.add(e3);
+        
+        Employee temp = new Employee();
+        temp.display(list);
+        
+    }
+    
+}
+
+package listinterface;
+import java.util.*;
+
+class Student
+{
+    int Id;
+    String course_name;
+    double marks;
+    Student()
+    {
+        Id=1;
+        course_name="a";
+        marks= 0.0;
+    }
+    Student(int Id,String course_name,double marks)
+    {
+        this.Id=Id;
+        this.course_name=course_name;
+        this.marks=marks;
+    }
+    ArrayList<Student> getData()
+    {
+        Student s1=new Student();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter Id: ");
+        s1.Id = sc.nextInt();
+        System.out.println("Enter course name: ");
+        s1.course_name = sc.next();
+        System.out.println("Enter marks: ");
+        s1.marks = sc.nextDouble();
+        
+        ArrayList<Student>list = new ArrayList();
+        list.add(s1);
+        return list;
+    }
+    void putData()
+    {
+        System.out.println("Student details: ");
+        System.out.println("Student Id: "+Id);
+        System.out.println("Student's course name: "+course_name);
+        System.out.println("Student's marks: "+marks);
+    }
+    
+}
+
+public class ListInterface {
+
+    
+    public static void main(String[] args) {
+      ArrayList<Student> s1 = new ArrayList<>();
+      Student p1=new Student();
+      s1 = p1.getData();
+      for(Student p2:s1)
+      {
+          p2.putData();
+      }
+      Student p3 = new Student(3,"Lab",40);
+      p3.putData();
+    }
+    
+}

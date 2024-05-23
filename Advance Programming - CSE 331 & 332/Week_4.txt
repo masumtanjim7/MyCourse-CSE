@@ -1,0 +1,277 @@
+class Test 
+{
+    int a;
+    public int b;
+    private int c;
+    void setc(int i)
+    {
+        c = i;
+    }
+    int getc()
+    {
+        return c;
+    }
+}
+class AccessTest 
+{
+    public static void main(String args[])
+    {
+        Test ob = new Test();
+        ob.a = 10;
+        ob.b = 20;
+        //ob.c;
+        ob.setc(100);
+        System.out.println("a,b and c: "+ob.a+" "+ob.b+" "+ob.getc());
+    }
+}
+
+//Inheritance 
+class A 
+{
+    int i,j;
+    void showij()
+    {
+        System.out.println("i and j: "+i+" "+j);
+    }
+}
+class B extends A
+{
+    int k;
+    void showk()
+    {
+        System.out.println("k: "+k);
+    }
+    void sum()
+    {
+        System.out.println("i+j+k: "+(i+j+k));
+    }
+}
+class SimpleInheritance 
+{
+    public static void main(String args[])
+    {
+        A superOb = new A();
+        B subOb = new B();
+        superOb.i = 10;
+        superOb.j = 20;
+        System.out.println("Contents of super object: ");
+        superOb.showij();
+        System.out.println();
+        
+        subOb.i = 7;
+        subOb.j = 8;
+        subOb.k = 9;
+        System.out.println("Contents of sub object: ");
+        subOb.showij();
+        subOb.showk();
+        System.out.println();
+        System.out.println("Sum of i,j and k: ");
+        subOb.sum();
+    }
+}
+class A 
+{
+    int i;
+    int j;
+    
+    void setij(int x,int y)
+    {
+        i = x;
+        j = y;
+    }
+}
+class B extends A
+{
+    int total;
+    void sum()
+    {
+        total = i+j;
+    }
+}
+class Access
+{
+    public static void main(String args[])
+    {
+        B subob = new B();
+        subob.setij(10,20);
+        subob.sum();
+        System.out.println("Total is: "+subob.total);
+    }
+}class Animal
+{
+    int a;
+    Animal()
+    {
+        System.out.println("Animal constructor");
+    }
+    Animal(int a)
+    {
+        System.out.println("Animal Parameterized");
+        this.a = a;
+    }
+}
+class Dog extends Animal 
+{
+    int b;
+    Dog()
+    {
+        System.out.println("Dog Constructor");
+    }
+    Dog(int b)
+    {
+        System.out.println("Dog Parameterized");
+       // this.a = a;
+        this.b =b;
+    }
+    
+}
+class Main
+{
+    public static void main(String args[])
+    {
+        Animal a = new Animal(10);
+        Dog d = new Dog(10);
+    }
+}
+// super (constructor)
+class Box
+{
+    private double length,width;
+    Box()
+    {
+        length = 2;
+        width = 4;
+        System.out.println("length and width: "+length+" "+width);
+    }
+    Box(double l,double w)
+    {
+        length = l;
+        width = w;
+        System.out.println("length and width: "+length+" "+width);
+    }
+    Box(Box b)
+    {
+        length = b.length;
+        width = b.width;
+        System.out.println("length and width: "+length+" "+width);
+    }
+    
+}
+class Boxweight extends Box
+{
+    private double weight;
+    Boxweight()
+    {
+        super();
+        weight = 4;
+        System.out.println("weight: "+weight);
+    }
+    Boxweight(double l,double w,double h)
+    {
+        super(l,w);
+        weight = h;
+        System.out.println("weight: "+weight);
+    }
+    Boxweight(Boxweight b)
+    {
+        super(b);
+        weight = b.weight;
+        System.out.println("weight: "+weight);
+    }
+    
+}
+class Boxcolor extends Boxweight
+{
+    private String color;
+    Boxcolor()
+    {
+        super();
+        color = "red";
+        System.out.println("color: "+color);
+    }
+    Boxcolor(double l,double w,double h,String p)
+    {
+        super(l,w,h);
+        color = p;
+        System.out.println("color: "+color);
+    }
+    Boxcolor(Boxcolor c)
+    {
+        super(c);
+        color = c.color;
+        System.out.println("color: "+color);
+    }
+}
+class HelloWorld {
+    public static void main(String[] args) {
+        Box b1 = new Box();
+        Box b2 = new Box(10,20);
+        Box b3 = new Box(b1);
+        
+        Boxweight w1 = new Boxweight();
+        Boxweight w2 = new Boxweight(10,20,30);
+        Boxweight w3 = new Boxweight(w1);
+        
+        Boxcolor c1 = new Boxcolor();
+        Boxcolor c2 = new Boxcolor(10,20,30,"Blue");
+        Boxcolor c3 = new Boxcolor(c1);
+       
+        
+    }
+}
+
+//super (member variable)
+class Animal
+{
+    String color = "Purple";
+}
+class Bird extends Animal
+{
+    String color = "Blue";
+    void show()
+    {
+        System.out.println("Color: "+color);
+        System.out.println("Color: "+super.color);
+    }
+}
+class hello
+{
+    public static void main(String args[])
+    {
+        Bird b1 = new Bird();
+        b1.show();
+    }
+}
+
+//super function overriding (member function)
+class Animal
+{
+    void show()
+    {
+        System.out.println("Animal");
+    }
+}
+class Bird extends Animal
+{
+    void show()
+    {
+        super.show();
+        System.out.println("Bird");
+    }
+}
+class Crow extends Bird 
+{
+    void show()
+    {
+        super.show();
+        System.out.println("Crow");
+    }
+}
+class hello
+{
+    public static void main(String args[])
+    {
+        Crow b1 = new Crow();
+        b1.show();
+    }
+}

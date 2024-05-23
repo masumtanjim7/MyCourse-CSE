@@ -1,0 +1,113 @@
+//List Interface
+public static void main(String[] args) {
+        List<Integer> l1 = new ArrayList<>();
+        l1.add(0,1);
+        l1.add(1,2);
+        l1.add(3);
+        l1.add(4);
+        System.out.println(l1);
+        l1.remove(1);
+        System.out.println(l1);
+        System.out.println(l1.get(2));
+        l1.set(0,5);
+        System.out.println(l1);
+    }
+
+//Arraylist
+1.
+public static void main(String[] args) {
+        ArrayList<String> a1=new ArrayList<>();
+        System.out.println("Initial Size of a1: "+a1.size());
+        a1.add("C");
+        a1.add("A");
+        a1.add("E");
+        a1.add("B");
+        a1.add("D");
+        a1.add("F");
+        a1.add(1,"A2");
+        System.out.println("Size of a1 after additions: "+a1.size());
+        System.out.println("Contents of a1: "+a1);
+        a1.remove("F");
+        a1.remove(2);
+        System.out.println("Size of a1 after deletions: "+a1.size());
+        System.out.println("Contents of a1: "+a1);
+    }
+2. //converts an arraylist to an array
+ public static void main(String[] args) {
+        ArrayList<Integer> a1=new ArrayList<>();
+        a1.add(1);
+        a1.add(2);
+        a1.add(3);
+        a1.add(4);
+        System.out.println("Contents of a1: "+a1);
+        
+        //get the array
+        Integer ia[]=new Integer[a1.size()];
+        ia=a1.toArray(ia);
+        int sum = 0;
+        for(int i: ia)
+        {
+            sum+=i;
+        }
+        System.out.println("Sum is: "+sum);
+       
+    }
+
+//LinkedList 
+  public static void main(String[] args) {
+      LinkedList<String>l1=new LinkedList<>();
+      l1.add("A");
+      l1.add("B");
+      l1.addLast("C");
+      l1.addFirst("D");
+      l1.add(2,"E");
+     
+      System.out.println(l1);
+      l1.remove("B");
+      l1.remove(3);
+      l1.removeFirst();
+      l1.removeLast();
+      
+      System.out.println(l1);
+    }
+ //Iterator
+public static void main(String[] args) {
+     LinkedList<String>list = new LinkedList<>();
+     list.add("Rahim");
+     list.add("Karim");
+     list.add("Abul");
+     list.add("Hasan");
+     
+     Iterator<String>iterator = list.iterator();
+     while(iterator.hasNext())
+     {
+         System.out.println(iterator.next()+" ");
+     }
+    }
+
+//Vector
+ public static void main(String[] args) {
+     List<Integer> l = new Vector<Integer>();
+     l.add(12);
+     l.add(23);
+     l.add(22);
+     l.add(20);
+     l.add(10);
+     System.out.println("Vector: "+l);
+     System.out.println("The object that is replaced is: "+l.set(0, 21));
+     System.out.println("The object that is replaced is: "+l.set(4, 50));
+     System.out.println("The new Vector is: "+l);
+    }
+
+//Stack 
+ public static void main(String[] args) {
+     Stack<Integer> stack = new Stack<Integer>();
+     stack.push(1);
+     stack.push(2);
+     stack.push(3);
+     stack.push(4);
+     while(!stack.isEmpty())
+     {
+         System.out.println(stack.pop());
+     }
+    }

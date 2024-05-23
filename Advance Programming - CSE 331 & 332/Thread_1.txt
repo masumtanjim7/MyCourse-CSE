@@ -1,0 +1,187 @@
+//Main thread
+class currentThreadDemo
+ {
+     public static void main(String args[])
+     {
+         Thread t = Thread.currentThread();
+         System.out.println("Current Thread: "+t.getName());
+         t.setName("My thread");
+         System.out.println("After name change: "+t);
+     }
+ }
+//Creating a thread using runnable interface
+public class ExampleClass implements Runnable
+{
+    public void run()
+    {
+        System.out.println("Hello");
+    }
+
+
+    public static void main(String[] args) {
+        ExampleClass ec = new ExampleClass();
+        Thread t = new Thread (ec);
+        t.start();
+    }
+}
+//Extending a thread 
+class Test extends Thread 
+ {
+     public void run()
+     {
+         System.out.println("Print something");
+     }
+     public static void main(String args[])
+     {
+         Test t = new Test();
+         t.start();
+     }
+ }
+
+//Creating Multiple Threads
+class MultithreadingDemo implements Runnable {
+    public void run()
+    {
+        try {
+            // Displaying the thread that is running
+            System.out.println("Thread " + Thread.currentThread().getId()
+                + " is running");
+        }
+        catch (Exception e) {
+            // Throwing an exception
+            System.out.println("Exception is caught");
+        }
+    }
+}
+
+public class JavaApplication9 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+           int n = 8; // Number of threads
+           for (int i = 0; i < n; i++) {
+            Thread object = new Thread(new MultithreadingDemo());
+            object.start();
+
+    }
+    
+}
+}
+//Synchronized
+class Callme {
+ void call(String msg) {
+ System.out.print("[" + msg);
+ try {
+ Thread.sleep(1000);
+ } catch(InterruptedException e) {
+ System.out.println("Interrupted");
+ }
+ System.out.println("]");
+ }
+}
+class Caller implements Runnable {
+ String msg;
+ Callme target;
+ Thread t;
+ public Caller(Callme targ, String s) {
+ target = targ;
+ msg = s;
+ t = new Thread(this);
+ t.start();
+ }
+ public void run() {
+    synchronized(target){
+     target.call(msg);}
+ }
+}
+public class JavaApplication10 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        
+ Callme target = new Callme();
+ Caller ob1 = new Caller(target, "Hello");
+ Caller ob2 = new Caller(target, "Synchronized");
+ Caller ob3 = new Caller(target, "World");
+ // wait for threads to end
+ try {
+ ob1.t.join();
+ ob2.t.join();
+ ob3.t.join();
+ } catch(InterruptedException e) {
+ System.out.println("Interrupted");
+ }
+ }
+
+}
+//Thread functions
+import java.util.*;
+ 
+// Class- MyThread
+class MyThread extends Thread {
+ 
+    // Remember : Method can be executed multiple times
+    public void run()
+    {
+ 
+        // Try block to check if any exception occurs
+        try {
+ 
+            // Print and display the running thread
+            // using currentThread() method
+            System.out.println(
+                "Thread " + Thread.currentThread().getId()
+                + " is running");
+        }
+ 
+        // Catch block to handle the exceptions
+        catch (Exception e) {
+ 
+            // Message to be printed if
+            // the exception is encountered
+            System.out.println("Exception is caught");
+        }
+    }
+}
+ 
+// Class-Main
+public class Thread2 {
+ 
+    // Main Driver Method
+    public static void main(String[] args) throws Exception
+    {
+ 
+        // Creating a thread
+        MyThread thread = new MyThread();
+ 
+        // Naming thread as "Java"
+        thread.setName("Java");
+ 
+        // Start the functioning of a thread
+        thread.start();
+ 
+        // Sleeping thread for specific amount of time
+        Thread.sleep(500);
+ 
+        // Thread Java suspended temporarily
+        thread.suspend();
+ 
+        // Display message
+        System.out.println(
+            "Thread going to sleep for 5 seconds");
+ 
+        // Sleeping thread for specific amount of time
+        Thread.sleep(5000);
+ 
+        // Display message
+        System.out.println("Thread Resumed");
+ 
+        // Thread Java resumed
+        thread.resume();
+    }
+}
+    

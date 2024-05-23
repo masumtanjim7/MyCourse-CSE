@@ -1,0 +1,72 @@
+//multiple catch clauses
+class Hello
+{
+    public static void main(String args[])
+    {
+        try{
+            int a = 42/0;
+            int c[]={1};
+            c[4]=3;
+        }
+        catch(ArithmeticException e)
+        {
+            System.out.println(e);
+        }
+        catch(ArrayIndexOutOfBoundsException e)
+        {
+            System.out.println(e);
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+        finally
+        {
+            System.out.println("code After try/catch block");
+        }
+    }
+}
+
+
+//throw keyword
+
+class test 
+{
+    public static void validate(int age)
+    {
+        if(age<18)
+        {
+            throw new ArithmeticException("Not eligible");
+        }
+        else
+        {
+            System.out.println("Eligible");
+        }
+    }
+    public static void main(String args[])
+    {
+        validate(13);
+    }
+}
+// throws keyword
+import java.io.*;
+
+class HelloWorld {
+    
+    public static void method() throws IOException
+    {
+      System.out.println("Exception caught");
+    }
+
+    public static void main(String[] args) {
+        try 
+        {
+            method();
+        }
+        catch(IOException e)
+        {
+            System.out.println("Exception handled");
+        }
+      
+    }
+}
