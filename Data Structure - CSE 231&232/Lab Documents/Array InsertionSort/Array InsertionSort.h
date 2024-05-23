@@ -1,0 +1,10 @@
+#ifndef ARRAY_INSERTIONSORT_H_INCLUDED
+#define ARRAY_INSERTIONSORT_H_INCLUDED
+
+
+int n
+
+ ( int n, arr[n] );
+
+
+#endif // ARRAY_INSERTIONSORT_H_INCLUDED
